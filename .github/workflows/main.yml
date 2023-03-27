@@ -25,7 +25,7 @@ jobs:
           version: 6.0.2
 
       - name: Install deps and build (with cache)
-        run: pnpm install  --no-frozen-lockfile
+        run: NODE_OPTIONS=--max_old_space_size=4096 pnpm install  --no-frozen-lockfile
 
       - name: Lint
         run: pnpm lint
@@ -36,19 +36,11 @@ jobs:
           LOCAL_APIKEY: ${{ secrets.LOCAL_APIKEY }}
 
       - name: Build
-        run: pnpm build
+        run: NODE_OPTIONS=--max_old_space_size=4096 pnpm build
 
   coverage:
     name: coverage
     runs-on: ubuntu-latest
-    services:
-      ftp:
-        image: delfer/alpine-ftp-server
-        env:
-          USERS: test|thisisapassword
-        ports:
-          - 21:21
-          - 21000-21010:21000-21010
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -57,7 +49,7 @@ jobs:
       - uses: pnpm/action-setup@v2.2.4
         with:
           version: 6.0.2
-      - run: pnpm install --no-frozen-lockfile
+      - run: NODE_OPTIONS=--max_old_space_size=4096 pnpm install --no-frozen-lockfile
       - run: sleep 5 && pnpm test
         env:
           LOCAL_APIKEY: ${{ secrets.LOCAL_APIKEY }}

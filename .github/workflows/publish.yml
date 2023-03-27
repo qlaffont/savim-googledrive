@@ -47,7 +47,7 @@ jobs:
 
       - name: Install deps and build (with cache)
         if: steps.changes.outputs.src == 'true'
-        run: pnpm install --no-frozen-lockfile
+        run: NODE_OPTIONS=--max_old_space_size=4096 pnpm install --no-frozen-lockfile
 
       - name: Lint
         if: steps.changes.outputs.src == 'true'
@@ -61,7 +61,7 @@ jobs:
 
       - name: Build
         if: steps.changes.outputs.src == 'true'
-        run: pnpm build
+        run: NODE_OPTIONS=--max_old_space_size=4096 pnpm build
 
       - name: Bump version
         if: steps.changes.outputs.src == 'true'
