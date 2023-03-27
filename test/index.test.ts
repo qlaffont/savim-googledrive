@@ -137,7 +137,7 @@ describe('Savim S3', () => {
       SavimGoogleDriveProvider,
       '',
     );
-    await savim.createFolder('createfolder');
+    await savim.createFolder('/toto/createfolder');
   });
 
   it('should be able to delete folder', async () => {
@@ -146,7 +146,7 @@ describe('Savim S3', () => {
       SavimGoogleDriveProvider,
       '',
     );
-    await savim.deleteFolder('deletefolder');
+    await savim.deleteFolder('/toto/deletefolder');
   });
 
   it('should be able to list folders', async () => {
