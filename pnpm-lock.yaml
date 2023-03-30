@@ -52,8 +52,8 @@ devDependencies:
     specifier: ^29.4.3
     version: 29.5.0(@types/node@18.15.10)
   np:
-    specifier: 7.6.4
-    version: 7.6.4
+    specifier: 7.7.0
+    version: 7.7.0
   prettier:
     specifier: 2.8.7
     version: 2.8.7
@@ -7672,7 +7672,7 @@ packages:
     dev: true
 
   /mute-stream@0.0.7:
-    resolution: {integrity: sha1-MHXOk7whuPq0PhvE2n6BFe0ee6s=}
+    resolution: {integrity: sha512-r65nCZhrbXXb6dXOACihYApHw2Q6pV0M3V0PSxd74N0+D8nzAdEAITq2oAjA1jVnKI+tGvEBUpqiMh0+rW6zDQ==}
     dev: true
 
   /mute-stream@0.0.8:
@@ -7812,8 +7812,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /np@7.6.4:
-    resolution: {integrity: sha512-w1bwfhN2OCY8VgVdtkSn2vHN+c0KtPnCCWKWvPjuB6WCxMc1bmU797xCc1NZJdRAW2F79zrMMKOIh0N/A1xdXg==}
+  /np@7.7.0:
+    resolution: {integrity: sha512-G4HfO6JUl7iKOX1qfYHM/kG5ApqqZ4ma8YjtVAJoyS5VdKkGE/OdSG3cOE9Lwr71klNz9n6KIZmPRnh0L7qM1Q==}
     engines: {git: '>=2.11.0', node: '>=10', npm: '>=6.8.0', yarn: '>=1.7.0'}
     hasBin: true
     dependencies:
