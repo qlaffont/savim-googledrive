@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.10 (2023-04-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency googleapis to v116 ([55b0b86](https://github.com/flexper/savim-googledrive/commit/55b0b86bfeecb291b67a0026d88dff90117391c1))
+
 ### 1.0.9 (2023-04-11)
 
 
