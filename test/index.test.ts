@@ -9,6 +9,11 @@ import {
 } from '../src';
 
 jest.mock('googleapis', () => {
+  const Readable = require('stream').Readable;
+  const s = new Readable();
+  s._read = () => {}; // redundant? see update below
+  s.push('test');
+  s.push(null);
   return {
     google: {
       drive: jest.fn().mockImplementation(() => {
@@ -25,7 +30,7 @@ jest.mock('googleapis', () => {
           files: {
             get: jest.fn().mockImplementation(() => {
               return {
-                data: 'test',
+                data: s,
               };
             }),
             delete: jest.fn().mockImplementation(() => {
@@ -119,7 +124,7 @@ describe('Savim S3', () => {
     );
     const fileName = 'testupload.txt';
     const fileContent = 'test';
-    expect(await savim.getFile(fileName)).toEqual(fileContent);
+    expect(Buffer.from(await savim.getFile(fileName) as string, 'base64').toString()).toEqual(fileContent);
   });
   it('should be able to delete file', async () => {
     const savim = new Savim();

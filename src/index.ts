@@ -8,7 +8,7 @@ import {
 import { google } from 'googleapis';
 import { drive_v3 } from 'googleapis/build/src/apis/drive/v3';
 import { SavimProviderInterface } from 'savim';
-import { Stream } from 'stream';
+import { Readable, Stream } from 'stream';
 
 export type SavimGoogleDriveProviderConfig =
   | GoogleAuth
@@ -109,6 +109,18 @@ const resolvePathToGetFilename = async (path: string) => {
   return fileName as string;
 };
 
+function streamToString(stream: Readable) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const chunks: any[] = [];
+  return new Promise((resolve, reject) => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-ignore
+    stream.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+    stream.on('error', (err) => reject(err));
+    stream.on('end', () => resolve(Buffer.concat(chunks).toString('base64')));
+  });
+}
+
 export class SavimGoogleDriveProvider implements SavimProviderInterface {
   name = 'google-drive';
   client: drive_v3.Drive;
@@ -130,13 +142,16 @@ export class SavimGoogleDriveProvider implements SavimProviderInterface {
   async getFile(filenameWithPath: string) {
     const fileId = await resolvePathToGetFileId(this.client, filenameWithPath);
 
-    const file = await this.client.files.get({
-      fileId,
-      alt: 'media',
-      acknowledgeAbuse: true,
-    });
+    const file = await this.client.files.get(
+      {
+        fileId,
+        alt: 'media',
+        acknowledgeAbuse: true,
+      },
+      { responseType: 'stream' },
+    );
 
-    return file.data;
+    return streamToString(file.data);
   }
 
   async uploadFile(
