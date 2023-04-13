@@ -11,6 +11,7 @@ import {
 jest.mock('googleapis', () => {
   const Readable = require('stream').Readable;
   const s = new Readable();
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   s._read = () => {}; // redundant? see update below
   s.push('test');
   s.push(null);
@@ -124,7 +125,12 @@ describe('Savim S3', () => {
     );
     const fileName = 'testupload.txt';
     const fileContent = 'test';
-    expect(Buffer.from(await savim.getFile(fileName) as string, 'base64').toString()).toEqual(fileContent);
+    expect(
+      Buffer.from(
+        (await savim.getFile(fileName)) as string,
+        'base64',
+      ).toString(),
+    ).toEqual(fileContent);
   });
   it('should be able to delete file', async () => {
     const savim = new Savim();
