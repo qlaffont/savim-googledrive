@@ -5,8 +5,8 @@ dependencies:
     specifier: ^8.7.0
     version: 8.7.0
   googleapis:
-    specifier: ^117.0.0
-    version: 117.0.0
+    specifier: ^118.0.0
+    version: 118.0.0
   savim:
     specifier: ^1.1.7
     version: 1.1.7
@@ -5316,8 +5316,8 @@ packages:
       - supports-color
     dev: false
 
-  /googleapis@117.0.0:
-    resolution: {integrity: sha512-F6l7uK5BpPuMoWZQJ07yPgd1o42R5ke1CbxfejPJtCffd9UyWdSvsr7Ah97u9co9Qk1HkNSoCX749rxQmpVj8g==}
+  /googleapis@118.0.0:
+    resolution: {integrity: sha512-Ny6zJOGn5P/YDT6GQbJU6K0lSzEu4Yuxnsn45ZgBIeSQ1RM0FolEjUToLXquZd89DU9wUfqA5XYHPEctk1TFWg==}
     engines: {node: '>=12.0.0'}
     dependencies:
       google-auth-library: 8.7.0
