@@ -21,6 +21,7 @@ function escapeRegExp(string: string) {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
 }
 function replaceAll(str: string, match: string, replacement: string) {
+  console.log(str);
   return str.replace(new RegExp(escapeRegExp(match), 'g'), () => replacement);
 }
 
@@ -62,14 +63,15 @@ const resolvePathToGetFolderId = async (
 };
 
 const resolvePathToGetFileId = async (client: drive_v3.Drive, path: string) => {
-  let foldersArray = path.substring(1).split('/');
+  const correctPath = path.startsWith('/') ? path : `/${path}`;
+  let foldersArray = correctPath.substring(1).split('/');
   let fileName;
 
   if (foldersArray.length !== 1) {
     fileName = foldersArray[foldersArray.length - 1];
     foldersArray = foldersArray.slice(0, -1);
   } else {
-    fileName = foldersArray;
+    fileName = foldersArray[0];
     foldersArray = [];
   }
 

@@ -94,7 +94,7 @@ describe('Savim S3', () => {
       SavimGoogleDriveProvider,
       '',
     );
-    const fileName = 'testupload.txt';
+    const fileName = '/testupload.txt';
     const fileContent = 'test';
     await savim.uploadFile(fileName, fileContent);
   });
@@ -104,7 +104,7 @@ describe('Savim S3', () => {
       SavimGoogleDriveProvider,
       '',
     );
-    const fileName = 'testuploadbuffer.txt';
+    const fileName = '/testuploadbuffer.txt';
     const fileContent = 'test';
     await savim.uploadFile(fileName, Buffer.from(fileContent, 'utf8'));
   });
@@ -114,7 +114,7 @@ describe('Savim S3', () => {
       SavimGoogleDriveProvider,
       '',
     );
-    const fileName = 'testuploadstream.txt';
+    const fileName = '/testuploadstream.txt';
     const fileContent = 'test';
     const s = new Readable();
     s.push(fileContent);
@@ -127,7 +127,7 @@ describe('Savim S3', () => {
       SavimGoogleDriveProvider,
       '',
     );
-    const fileName = 'testupload.txt';
+    const fileName = '/testupload.txt';
     const fileContent = 'test';
     expect(
       Buffer.from(
@@ -142,7 +142,7 @@ describe('Savim S3', () => {
       SavimGoogleDriveProvider,
       '',
     );
-    const fileName = 'testupload.txt';
+    const fileName = '/testupload.txt';
     await savim.deleteFile(fileName);
   });
 
@@ -170,7 +170,7 @@ describe('Savim S3', () => {
       SavimGoogleDriveProvider,
       '',
     );
-    await savim.getFolders('');
+    await savim.getFolders('/');
   });
 
   it('should be able to list files', async () => {
@@ -179,6 +179,6 @@ describe('Savim S3', () => {
       SavimGoogleDriveProvider,
       '',
     );
-    await savim.getFiles('');
+    await savim.getFiles('/');
   });
 });
