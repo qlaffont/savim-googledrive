@@ -33,7 +33,7 @@ const resolvePathToGetFolderId = async (
   for (const folderName of foldersArray) {
     //@ts-ignore
     const folders = await client.files.list({
-      q: `mimeType = 'application/vnd.google-apps.folder' and trashed = false and name = '${folderName}'${
+      q: `mimeType = 'application/vnd.google-apps.folder' and trashed = false and name = '${folderName.replaceAll("'", `'"'"'`)}'${
         folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`
       }`,
       fields: 'files(id, name)',
@@ -66,7 +66,7 @@ const resolvePathToGetFileId = async (client: drive_v3.Drive, path: string) => {
   for (const folderName of foldersArray) {
     //@ts-ignore
     const folders = await client.files.list({
-      q: `mimeType = 'application/vnd.google-apps.folder' and trashed = false and name = '${folderName}'${
+      q: `mimeType = 'application/vnd.google-apps.folder' and trashed = false and name = '${folderName.replaceAll("'", `'"'"'`)}'${
         folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`
       }`,
       fields: 'files(id, name)',
@@ -80,7 +80,7 @@ const resolvePathToGetFileId = async (client: drive_v3.Drive, path: string) => {
   }
 
   const res = await client.files.list({
-    q: `trashed = false and name = '${fileName}'${
+    q: `trashed = false and name = '${(fileName as string).replaceAll("'", `'"'"'`)}'${
       folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`
     }`,
     fields: 'files(id, name)',
