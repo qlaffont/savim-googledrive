@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.58 (2023-07-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency google-auth-library to v9 ([9025470](https://github.com/flexper/savim-googledrive/commit/90254709648c5cc865c20912f56ccda4747de49c))
+
 ### 1.0.57 (2023-07-17)
 
 ### 1.0.56 (2023-07-14)
