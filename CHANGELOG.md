@@ -21,14 +21,14 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v126 ([e0b8245](https://github.com/flexper/savim-googledrive/commit/e0b824592dd7e8d5b943170118d3b0484ca24f8a))
+* **deps:** update dependency googleapis to v126 ([e0b8245](https://github.com/qlaffont/savim-googledrive/commit/e0b824592dd7e8d5b943170118d3b0484ca24f8a))
 
 ### 1.0.75 (2023-08-16)
 
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v125 ([8129354](https://github.com/flexper/savim-googledrive/commit/8129354ec8d3a069aa10479bb582ef00f6116c8f))
+* **deps:** update dependency googleapis to v125 ([8129354](https://github.com/qlaffont/savim-googledrive/commit/8129354ec8d3a069aa10479bb582ef00f6116c8f))
 
 ### 1.0.74 (2023-08-15)
 
@@ -43,7 +43,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v124 ([aba36bf](https://github.com/flexper/savim-googledrive/commit/aba36bf7ad537d52ec9db032488ba7bd98ff12a6))
+* **deps:** update dependency googleapis to v124 ([aba36bf](https://github.com/qlaffont/savim-googledrive/commit/aba36bf7ad537d52ec9db032488ba7bd98ff12a6))
 
 ### 1.0.69 (2023-08-07)
 
@@ -66,7 +66,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v123 ([8f0a8ea](https://github.com/flexper/savim-googledrive/commit/8f0a8eac814edee2cca785d063fd9eb03f150ff4))
+* **deps:** update dependency googleapis to v123 ([8f0a8ea](https://github.com/qlaffont/savim-googledrive/commit/8f0a8eac814edee2cca785d063fd9eb03f150ff4))
 
 ### 1.0.60 (2023-07-25)
 
@@ -77,7 +77,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **deps:** update dependency google-auth-library to v9 ([9025470](https://github.com/flexper/savim-googledrive/commit/90254709648c5cc865c20912f56ccda4747de49c))
+* **deps:** update dependency google-auth-library to v9 ([9025470](https://github.com/qlaffont/savim-googledrive/commit/90254709648c5cc865c20912f56ccda4747de49c))
 
 ### 1.0.57 (2023-07-17)
 
@@ -88,7 +88,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v122 ([f3abc15](https://github.com/flexper/savim-googledrive/commit/f3abc15df2bcd39ddc75329c9ab08b7eec7d69cc))
+* **deps:** update dependency googleapis to v122 ([f3abc15](https://github.com/qlaffont/savim-googledrive/commit/f3abc15df2bcd39ddc75329c9ab08b7eec7d69cc))
 
 ### 1.0.54 (2023-07-11)
 
@@ -97,7 +97,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v121 ([4c7cad5](https://github.com/flexper/savim-googledrive/commit/4c7cad578c1599ed331d20bd45a98a4ec90d9d01))
+* **deps:** update dependency googleapis to v121 ([4c7cad5](https://github.com/qlaffont/savim-googledrive/commit/4c7cad578c1599ed331d20bd45a98a4ec90d9d01))
 
 ### 1.0.52 (2023-07-11)
 
@@ -118,7 +118,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v120 ([84f27da](https://github.com/flexper/savim-googledrive/commit/84f27da1386251d1084f5fa4005973bb38e0e3bb))
+* **deps:** update dependency googleapis to v120 ([84f27da](https://github.com/qlaffont/savim-googledrive/commit/84f27da1386251d1084f5fa4005973bb38e0e3bb))
 
 ### 1.0.44 (2023-06-28)
 
@@ -181,28 +181,28 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v118 ([4d06a04](https://github.com/flexper/savim-googledrive/commit/4d06a0401f32b4bc54230440c2a90a27ba14f8f9))
+* **deps:** update dependency googleapis to v118 ([4d06a04](https://github.com/qlaffont/savim-googledrive/commit/4d06a0401f32b4bc54230440c2a90a27ba14f8f9))
 
 ### 1.0.11 (2023-04-13)
 
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v117 ([a67a124](https://github.com/flexper/savim-googledrive/commit/a67a124f56eeb3bee0abfbf2ce0da59d2ead09a8))
+* **deps:** update dependency googleapis to v117 ([a67a124](https://github.com/qlaffont/savim-googledrive/commit/a67a124f56eeb3bee0abfbf2ce0da59d2ead09a8))
 
 ### 1.0.10 (2023-04-12)
 
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v116 ([55b0b86](https://github.com/flexper/savim-googledrive/commit/55b0b86bfeecb291b67a0026d88dff90117391c1))
+* **deps:** update dependency googleapis to v116 ([55b0b86](https://github.com/qlaffont/savim-googledrive/commit/55b0b86bfeecb291b67a0026d88dff90117391c1))
 
 ### 1.0.9 (2023-04-11)
 
 
 ### Bug Fixes
 
-* **deps:** update dependency googleapis to v115 ([2366fc6](https://github.com/flexper/savim-googledrive/commit/2366fc6f23e93671fa3029a4181d7c62a262b912))
+* **deps:** update dependency googleapis to v115 ([2366fc6](https://github.com/qlaffont/savim-googledrive/commit/2366fc6f23e93671fa3029a4181d7c62a262b912))
 
 ### 1.0.8 (2023-04-10)
 
