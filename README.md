@@ -2,7 +2,7 @@
 
 # savim-googledrive
 
-A simple library to save file with Savim to Google Drive.
+A simple library to save file with Savim to Google Drive. Old Owner: [@flexper](https://github.com/flexper)
 
 ## Usage
 
