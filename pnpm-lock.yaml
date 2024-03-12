@@ -13,7 +13,7 @@ dependencies:
     version: 134.0.0
   savim:
     specifier: ^1.2.0
-    version: 1.2.93
+    version: 1.2.97
 
 devDependencies:
   '@google-cloud/local-auth':
@@ -5402,8 +5402,8 @@ packages:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
     dev: true
 
-  /fast-redact@3.3.0:
-    resolution: {integrity: sha512-6T5V1QK1u4oF+ATxs1lWUmlEk6P2T9HqJG3e2DnHOdVgZy2rFJBoEnrIedcTXlkAHU/zKC+7KETJ+KGGKwxgMQ==}
+  /fast-redact@3.4.0:
+    resolution: {integrity: sha512-2gwPvyna0zwBdxKnng1suu/dTL5s8XEy2ZqH8mwDUwJdDkV8w5kp+JV26mupdK68HmPMbm6yjW9m7/Ys/BHEHg==}
     engines: {node: '>=6'}
     dev: false
 
@@ -8952,7 +8952,7 @@ packages:
     hasBin: true
     dependencies:
       atomic-sleep: 1.0.0
-      fast-redact: 3.3.0
+      fast-redact: 3.4.0
       on-exit-leak-free: 2.1.2
       pino-abstract-transport: 1.1.0
       pino-std-serializers: 6.2.2
@@ -9672,8 +9672,8 @@ packages:
       - supports-color
     dev: true
 
-  /savim@1.2.93:
-    resolution: {integrity: sha512-rr/enhA8R4AEpE1kuYVLpKCwkCJgxQepZvKSUXHw+T6n0kGw2sC/6hTl2+yHQydteLxL0o285IB3nJD/c6GAsA==}
+  /savim@1.2.97:
+    resolution: {integrity: sha512-3Bzn7KoF9pVdlKJmJEX456WzgLBpvrDGEkknAPCLTOQKNaCJhXl3Xx2n4//sadBNLRJyJ2fXJx46HLJkQ6wAWw==}
     engines: {node: '>=10'}
     dependencies:
       '@types/node': 20.11.26
