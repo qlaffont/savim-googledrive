@@ -13,7 +13,7 @@ dependencies:
     version: 134.0.0
   savim:
     specifier: ^1.2.0
-    version: 1.2.103
+    version: 1.2.104
 
 devDependencies:
   '@google-cloud/local-auth':
@@ -9649,8 +9649,8 @@ packages:
       - supports-color
     dev: true
 
-  /savim@1.2.103:
-    resolution: {integrity: sha512-YqnOdhUJ0Eh6acY87S4yNX5p1NBJ+CyJSiwxZrWxE/jSoBMkvO0NxZpnjPSsKDWsIJSG046lnz6f5bGgZut+GA==}
+  /savim@1.2.104:
+    resolution: {integrity: sha512-k3RVk5C6IrtrGyqHVZUsJa6dApiS6j/0zzSOBg4bOTftwnBVpxwYtAYEOvWPqz2ifsPeqszxdp36TB3j//CpQQ==}
     engines: {node: '>=10'}
     dependencies:
       '@types/node': 20.11.28
