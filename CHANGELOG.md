@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.189 (2024-04-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency google-auth-library to v9.8.0 ([bd89fa7](https://github.com/qlaffont/savim-googledrive/commit/bd89fa7023350e663b75052d47cc41ae24e2c805))
+
 ### 1.0.188 (2024-04-15)
 
 ### 1.0.187 (2024-04-13)
