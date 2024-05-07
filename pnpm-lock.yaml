@@ -12,8 +12,8 @@ importers:
         specifier: ^9.0.0
         version: 9.9.0
       googleapis:
-        specifier: ^136.0.0
-        version: 136.0.0
+        specifier: ^137.0.0
+        version: 137.0.0
       savim:
         specifier: ^1.2.0
         version: 1.2.134
@@ -2828,8 +2828,8 @@ packages:
     resolution: {integrity: sha512-/fhDZEJZvOV3X5jmD+fKxMqma5q2Q9nZNSF3kn1F18tpxmA86BcTxAGBQdM0N89Z3bEaIs+HVznSmFJEAmMTjA==}
     engines: {node: '>=14.0.0'}
 
-  googleapis@136.0.0:
-    resolution: {integrity: sha512-W2Z1NtFS8ie5SzN74+lnTzLS9d0tS01dybibqXjWKSfdvTkQr9DYsKYNMRpzMAcBva1ZWCAgTiX4fgGz2Cwbaw==}
+  googleapis@137.0.0:
+    resolution: {integrity: sha512-LtHGoFPMJJ8GAPLWbu0p1R1fORSEZemq+cCMNUj7KJXWqDAjy3uYPAbxWM8EoCpnyWBj2qDkliBBDGTTAdqRNg==}
     engines: {node: '>=14.0.0'}
 
   gopd@1.0.1:
@@ -9204,7 +9204,7 @@ snapshots:
       - encoding
       - supports-color
 
-  googleapis@136.0.0:
+  googleapis@137.0.0:
     dependencies:
       google-auth-library: 9.9.0
       googleapis-common: 7.2.0
