@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.211 (2024-05-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency googleapis to v137.1.0 ([85e6744](https://github.com/qlaffont/savim-googledrive/commit/85e6744da9f32d479383c9eaf5a7c5584aa1aaf6))
+
 ### 1.0.210 (2024-05-07)
 
 
