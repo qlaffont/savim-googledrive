@@ -12,8 +12,8 @@ importers:
         specifier: ^9.0.0
         version: 9.10.0
       googleapis:
-        specifier: ^137.0.0
-        version: 137.1.0
+        specifier: ^139.0.0
+        version: 139.0.0
       savim:
         specifier: ^1.2.0
         version: 1.2.155
@@ -2826,8 +2826,8 @@ packages:
     resolution: {integrity: sha512-/fhDZEJZvOV3X5jmD+fKxMqma5q2Q9nZNSF3kn1F18tpxmA86BcTxAGBQdM0N89Z3bEaIs+HVznSmFJEAmMTjA==}
     engines: {node: '>=14.0.0'}
 
-  googleapis@137.1.0:
-    resolution: {integrity: sha512-2L7SzN0FLHyQtFmyIxrcXhgust77067pkkduqkbIpDuj9JzVnByxsRrcRfUMFQam3rQkWW2B0f1i40IwKDWIVQ==}
+  googleapis@139.0.0:
+    resolution: {integrity: sha512-sBBCyTJOo8l2DtLZaLWbjIvuLC0HcQt3+JXpEKhYS1JXXhA/wGjBHXxHQ5UwJB0rlBhO53k/OUXug0/gfKCtBw==}
     engines: {node: '>=14.0.0'}
 
   gopd@1.0.1:
@@ -9040,7 +9040,7 @@ snapshots:
 
   function.prototype.name@1.1.5:
     dependencies:
-      call-bind: 1.0.6
+      call-bind: 1.0.7
       define-properties: 1.2.0
       es-abstract: 1.21.2
       functions-have-names: 1.2.3
@@ -9209,7 +9209,7 @@ snapshots:
       - encoding
       - supports-color
 
-  googleapis@137.1.0:
+  googleapis@139.0.0:
     dependencies:
       google-auth-library: 9.10.0
       googleapis-common: 7.2.0
@@ -9509,7 +9509,7 @@ snapshots:
 
   is-boolean-object@1.1.2:
     dependencies:
-      call-bind: 1.0.6
+      call-bind: 1.0.7
       has-tostringtag: 1.0.0
 
   is-buffer@1.1.6: {}
@@ -9666,7 +9666,7 @@ snapshots:
   is-typed-array@1.1.10:
     dependencies:
       available-typed-arrays: 1.0.5
-      call-bind: 1.0.6
+      call-bind: 1.0.7
       for-each: 0.3.3
       gopd: 1.0.1
       has-tostringtag: 1.0.0
@@ -11914,7 +11914,7 @@ snapshots:
 
   string.prototype.trim@1.2.7:
     dependencies:
-      call-bind: 1.0.6
+      call-bind: 1.0.7
       define-properties: 1.2.0
       es-abstract: 1.21.2
 
@@ -11926,7 +11926,7 @@ snapshots:
 
   string.prototype.trimend@1.0.6:
     dependencies:
-      call-bind: 1.0.6
+      call-bind: 1.0.7
       define-properties: 1.2.0
       es-abstract: 1.21.2
 
@@ -11938,7 +11938,7 @@ snapshots:
 
   string.prototype.trimstart@1.0.6:
     dependencies:
-      call-bind: 1.0.6
+      call-bind: 1.0.7
       define-properties: 1.2.0
       es-abstract: 1.21.2
 
@@ -12477,7 +12477,7 @@ snapshots:
   which-typed-array@1.1.9:
     dependencies:
       available-typed-arrays: 1.0.5
-      call-bind: 1.0.6
+      call-bind: 1.0.7
       for-each: 0.3.3
       gopd: 1.0.1
       has-tostringtag: 1.0.0
