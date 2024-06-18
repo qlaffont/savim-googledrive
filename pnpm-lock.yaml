@@ -16,7 +16,7 @@ importers:
         version: 140.0.0
       savim:
         specifier: ^1.2.0
-        version: 1.2.160
+        version: 1.2.162
     devDependencies:
       '@google-cloud/local-auth':
         specifier: ^3.0.0
@@ -4749,8 +4749,8 @@ packages:
     deprecated: some dependency vulnerabilities fixed, support for node < 10 dropped, and newer ECMAScript syntax/features added
     hasBin: true
 
-  savim@1.2.160:
-    resolution: {integrity: sha512-XJjJ4X7EjiHMGxDcW0zhPSHztAnm/lK8iYzReUh6k/fsYjWm46a4WBktMAH/8KoWQ4pTItHE1kwQQISvi4EoFA==}
+  savim@1.2.162:
+    resolution: {integrity: sha512-4IvL+PnSTeXQvrmFR/0G7XbYdnToEkq6RV+7DABtmAv26qu5HNo8AJeFNFdaOHDrnf2z+ixZExHMKv5tGFLbTw==}
     engines: {node: '>=10'}
 
   saxes@3.1.11:
@@ -11632,7 +11632,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  savim@1.2.160:
+  savim@1.2.162:
     dependencies:
       '@types/node': 20.14.5
       pino: 9.2.0
