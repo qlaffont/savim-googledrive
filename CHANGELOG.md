@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.316 (2024-09-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency savim to v1.2.191 ([d2c61ca](https://github.com/qlaffont/savim-googledrive/commit/d2c61ca0d752eeb723ae486406ac88b7e1a27e36))
+
 ### 1.0.315 (2024-09-09)
 
 
