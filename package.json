@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "google-auth-library": "^10.0.0",
-    "googleapis": "^150.0.0",
+    "googleapis": "^155.0.0",
     "savim": "^1.2.0"
   }
 }
