@@ -1,14 +1,8 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-
-import {
-  BaseExternalAccountClient,
-  GoogleAuth,
-  OAuth2Client,
-} from 'google-auth-library';
-import { google } from 'googleapis';
-import { drive_v3 } from 'googleapis/build/src/apis/drive/v3';
-import { SavimProviderInterface } from 'savim';
-import { Readable, Stream } from 'stream';
+import { BaseExternalAccountClient, GoogleAuth, OAuth2Client } from "google-auth-library";
+import { google } from "googleapis";
+import { drive_v3 } from "googleapis/build/src/apis/drive/v3";
+import { SavimProviderInterface } from "savim";
+import { Readable, Stream } from "stream";
 
 export type SavimGoogleDriveProviderConfig =
   | GoogleAuth
@@ -16,20 +10,16 @@ export type SavimGoogleDriveProviderConfig =
   | BaseExternalAccountClient
   | string;
 
-//Taken from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 function escapeRegExp(string: string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
-}
-function replaceAll(str: string, match: string, replacement: string) {
-  console.log(str);
-  return str.replace(new RegExp(escapeRegExp(match), 'g'), () => replacement);
+  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-const resolvePathToGetFolderId = async (
-  client: drive_v3.Drive,
-  path: string,
-) => {
-  let foldersArray = path.substring(1).split('/');
+function replaceAll(str: string, match: string, replacement: string) {
+  return str.replace(new RegExp(escapeRegExp(match), "g"), () => replacement);
+}
+
+const resolvePathToGetFolderId = async (client: drive_v3.Drive, path: string) => {
+  let foldersArray = path.substring(1).split("/");
 
   if (foldersArray.length !== 1) {
     foldersArray = foldersArray.slice(0, -1);
@@ -37,7 +27,7 @@ const resolvePathToGetFolderId = async (
     foldersArray = [];
   }
 
-  let folderId;
+  let folderId: string | undefined;
 
   for (const folderName of foldersArray) {
     //@ts-ignore
@@ -46,26 +36,24 @@ const resolvePathToGetFolderId = async (
         folderName,
         "'",
         `'"'"'`,
-      )}'${
-        folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`
-      }`,
-      fields: 'files(id, name)',
+      )}'${folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`}`,
+      fields: "files(id, name)",
     });
 
     if (!folders.data.files || folders.data.files.length === 0) {
       throw new Error(`Folder '${folderName}' not found`);
     }
 
-    folderId = folders.data.files[0].id;
+    folderId = folders.data.files[0].id as string;
   }
 
   return folderId as string;
 };
 
 const resolvePathToGetFileId = async (client: drive_v3.Drive, path: string) => {
-  const correctPath = path.startsWith('/') ? path : `/${path}`;
-  let foldersArray = correctPath.substring(1).split('/');
-  let fileName;
+  const correctPath = path.startsWith("/") ? path : `/${path}`;
+  let foldersArray = correctPath.substring(1).split("/");
+  let fileName: string;
 
   if (foldersArray.length !== 1) {
     fileName = foldersArray[foldersArray.length - 1];
@@ -75,7 +63,7 @@ const resolvePathToGetFileId = async (client: drive_v3.Drive, path: string) => {
     foldersArray = [];
   }
 
-  let folderId;
+  let folderId: string | undefined;
 
   for (const folderName of foldersArray) {
     //@ts-ignore
@@ -84,28 +72,22 @@ const resolvePathToGetFileId = async (client: drive_v3.Drive, path: string) => {
         folderName,
         "'",
         `'"'"'`,
-      )}'${
-        folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`
-      }`,
-      fields: 'files(id, name)',
+      )}'${folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`}`,
+      fields: "files(id, name)",
     });
 
     if (!folders.data.files || folders.data.files.length === 0) {
       throw new Error(`Folder '${folderName}' not found`);
     }
 
-    folderId = folders.data.files[0].id;
+    folderId = folders.data.files[0].id as string;
   }
 
   const res = await client.files.list({
-    q: `trashed = false and name = '${replaceAll(
-      fileName as string,
-      "'",
-      `'"'"'`,
-    )}'${
+    q: `trashed = false and name = '${replaceAll(fileName, "'", `'"'"'`)}'${
       folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`
     }`,
-    fields: 'files(id, name)',
+    fields: "files(id, name)",
   });
   const files = res.data.files;
 
@@ -117,60 +99,54 @@ const resolvePathToGetFileId = async (client: drive_v3.Drive, path: string) => {
 };
 
 const resolvePathToGetFilename = async (path: string) => {
-  let foldersArray = path.substring(1).split('/');
-  let fileName;
+  const foldersArray = path.substring(1).split("/");
 
   if (foldersArray.length !== 1) {
-    fileName = foldersArray[foldersArray.length - 1];
-    foldersArray = foldersArray.slice(0, -1);
-  } else {
-    fileName = foldersArray[0];
-    foldersArray = [];
+    return foldersArray[foldersArray.length - 1];
   }
 
-  return fileName as string;
+  return foldersArray[0];
 };
 
 function streamToString(stream: Readable) {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const chunks: any[] = [];
-  return new Promise((resolve, reject) => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  const chunks: Buffer[] = [];
+  return new Promise<string>((resolve, reject) => {
     //@ts-ignore
-    stream.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
-    stream.on('error', (err) => reject(err));
-    stream.on('end', () => resolve(Buffer.concat(chunks).toString('base64')));
+    stream.on("data", (chunk) => chunks.push(Buffer.from(chunk)));
+    stream.on("error", (err) => reject(err));
+    stream.on("end", () => resolve(Buffer.concat(chunks).toString("base64")));
   });
 }
 
 export class SavimGoogleDriveProvider implements SavimProviderInterface {
-  name = 'google-drive';
+  name = "google-drive";
   client: drive_v3.Drive;
 
   constructor(public config: SavimGoogleDriveProviderConfig) {
     //@ts-ignore
-    this.client = google.drive({ version: 'v3', auth: config });
+    this.client = google.drive({ version: "v3", auth: config });
   }
 
-  async isHealthy() {
+  async isHealthy(): Promise<boolean> {
     try {
       await this.client.drives.list();
       return true;
-    } catch (err) {
+      // oxlint-disable-next-line no-unused-vars
+    } catch (_err) {
       return false;
     }
   }
 
-  async getFile(filenameWithPath: string) {
+  async getFile(filenameWithPath: string): Promise<string> {
     const fileId = await resolvePathToGetFileId(this.client, filenameWithPath);
 
     const file = await this.client.files.get(
       {
         fileId,
-        alt: 'media',
+        alt: "media",
         acknowledgeAbuse: true,
       },
-      { responseType: 'stream' },
+      { responseType: "stream" },
     );
 
     return streamToString(file.data);
@@ -179,14 +155,10 @@ export class SavimGoogleDriveProvider implements SavimProviderInterface {
   async uploadFile(
     filenameWithPath: string,
     content: string | Buffer | Stream,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     _config = {},
-  ) {
+  ): Promise<string | null | undefined> {
     const fileName = await resolvePathToGetFilename(filenameWithPath);
-    const folderId = await resolvePathToGetFolderId(
-      this.client,
-      filenameWithPath,
-    );
+    const folderId = await resolvePathToGetFolderId(this.client, filenameWithPath);
 
     const res = await this.client.files.create({
       requestBody: {
@@ -201,7 +173,7 @@ export class SavimGoogleDriveProvider implements SavimProviderInterface {
     return res.data.id;
   }
 
-  async deleteFile(filenameWithPath: string) {
+  async deleteFile(filenameWithPath: string): Promise<void> {
     const fileId = await resolvePathToGetFileId(this.client, filenameWithPath);
 
     await this.client.files.delete({
@@ -209,23 +181,23 @@ export class SavimGoogleDriveProvider implements SavimProviderInterface {
     });
   }
 
-  async createFolder(path: string) {
+  async createFolder(path: string): Promise<string | null | undefined> {
     const fileName = await resolvePathToGetFilename(path);
     const folderId = await resolvePathToGetFolderId(this.client, path);
 
     const res = await this.client.files.create({
       requestBody: {
         name: fileName,
-        mimeType: 'application/vnd.google-apps.folder',
+        mimeType: "application/vnd.google-apps.folder",
         parents: folderId ? [folderId] : [],
       },
-      fields: 'id, name',
+      fields: "id, name",
     });
 
     return res.data.id;
   }
 
-  async deleteFolder(path: string) {
+  async deleteFolder(path: string): Promise<void> {
     const folderId = await resolvePathToGetFileId(this.client, path);
 
     await this.client.files.delete({
@@ -233,10 +205,10 @@ export class SavimGoogleDriveProvider implements SavimProviderInterface {
     });
   }
 
-  async getFolders(path: string) {
-    let folderId;
+  async getFolders(path: string): Promise<string[] | undefined> {
+    let folderId: string | undefined;
 
-    if (path !== '/') {
+    if (path !== "/") {
       folderId = await resolvePathToGetFileId(this.client, path);
     }
 
@@ -244,17 +216,17 @@ export class SavimGoogleDriveProvider implements SavimProviderInterface {
       q: `mimeType = 'application/vnd.google-apps.folder' and trashed = false${
         folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`
       }`,
-      fields: 'files(id, name)',
+      fields: "files(id, name)",
     });
 
     //@ts-ignore
-    return res.data.files?.map((v) => `${path === '/' ? '' : path}/${v.name}`);
+    return res.data.files?.map((v) => `${path === "/" ? "" : path}/${v.name}`);
   }
 
-  async getFiles(path: string) {
-    let folderId;
+  async getFiles(path: string): Promise<string[] | undefined> {
+    let folderId: string | undefined;
 
-    if (path !== '/') {
+    if (path !== "/") {
       folderId = await resolvePathToGetFileId(this.client, path);
     }
 
@@ -262,10 +234,10 @@ export class SavimGoogleDriveProvider implements SavimProviderInterface {
       q: `mimeType != 'application/vnd.google-apps.folder' and trashed = false${
         folderId ? ` and '${folderId}' in parents` : ` and 'root' in parents`
       }`,
-      fields: 'files(id, name)',
+      fields: "files(id, name)",
     });
 
     //@ts-ignore
-    return res.data.files?.map((v) => `${path === '/' ? '' : path}/${v.name}`);
+    return res.data.files?.map((v) => `${path === "/" ? "" : path}/${v.name}`);
   }
 }

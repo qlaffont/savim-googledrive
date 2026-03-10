@@ -1,26 +1,24 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-import { describe, expect, it, jest } from '@jest/globals';
-import { Savim } from 'savim';
+import { describe, expect, it, mock } from 'bun:test';
 import { Readable } from 'stream';
+import { Savim } from 'savim';
 
 import {
   SavimGoogleDriveProvider,
   SavimGoogleDriveProviderConfig,
 } from '../src';
 
-jest.mock('googleapis', () => {
-  const Readable = require('stream').Readable;
-  const s = new Readable();
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  s._read = () => {}; // redundant? see update below
-  s.push('test');
-  s.push(null);
+const mockStream = new Readable();
+mockStream._read = () => {};
+mockStream.push('test');
+mockStream.push(null);
+
+mock.module('googleapis', () => {
   return {
     google: {
-      drive: jest.fn().mockImplementation(() => {
+      drive: mock().mockImplementation(() => {
         return {
           drives: {
-            list: jest.fn().mockImplementation(() => {
+            list: mock().mockImplementation(() => {
               if (process.env.ERROR === 'true') {
                 throw new Error('test');
               }
@@ -29,25 +27,25 @@ jest.mock('googleapis', () => {
             }),
           },
           files: {
-            get: jest.fn().mockImplementation(() => {
+            get: mock().mockImplementation(() => {
               return {
-                data: s,
+                data: mockStream,
               };
             }),
-            delete: jest.fn().mockImplementation(() => {
-              return {
-                data: { id: '1' },
-              };
-            }),
-            create: jest.fn().mockImplementation(() => {
+            delete: mock().mockImplementation(() => {
               return {
                 data: { id: '1' },
               };
             }),
-            list: jest.fn().mockImplementation(() => {
+            create: mock().mockImplementation(() => {
+              return {
+                data: { id: '1' },
+              };
+            }),
+            list: mock().mockImplementation(() => {
               return {
                 data: {
-                  files: [{ name: '1' }],
+                  files: [{ name: '1', id: 'folder-id-1' }],
                 },
               };
             }),
@@ -58,7 +56,7 @@ jest.mock('googleapis', () => {
   };
 });
 
-describe('Savim S3', () => {
+describe('Savim GoogleDrive', () => {
   it('should be Defined', () => {
     expect(Savim).toBeDefined();
   });
@@ -73,7 +71,7 @@ describe('Savim S3', () => {
         SavimGoogleDriveProvider,
         '',
       );
-    } catch (error) {
+    } catch (_error) {
       process.env.ERROR = 'false';
       expect(savim).toBeDefined();
       expect(savim.providers).toBeDefined();
@@ -164,21 +162,43 @@ describe('Savim S3', () => {
     await savim.deleteFolder('/toto/deletefolder');
   });
 
-  it('should be able to list folders', async () => {
+  it('should be able to list folders from root', async () => {
     const savim = new Savim();
     await savim.addProvider<SavimGoogleDriveProviderConfig>(
       SavimGoogleDriveProvider,
       '',
     );
-    await savim.getFolders('/');
+    const result = await savim.getFolders('/');
+    expect(result).toBeDefined();
   });
 
-  it('should be able to list files', async () => {
+  it('should be able to list folders from subfolder', async () => {
     const savim = new Savim();
     await savim.addProvider<SavimGoogleDriveProviderConfig>(
       SavimGoogleDriveProvider,
       '',
     );
-    await savim.getFiles('/');
+    const result = await savim.getFolders('/subfolder');
+    expect(result).toBeDefined();
+  });
+
+  it('should be able to list files from root', async () => {
+    const savim = new Savim();
+    await savim.addProvider<SavimGoogleDriveProviderConfig>(
+      SavimGoogleDriveProvider,
+      '',
+    );
+    const result = await savim.getFiles('/');
+    expect(result).toBeDefined();
+  });
+
+  it('should be able to list files from subfolder', async () => {
+    const savim = new Savim();
+    await savim.addProvider<SavimGoogleDriveProviderConfig>(
+      SavimGoogleDriveProvider,
+      '',
+    );
+    const result = await savim.getFiles('/subfolder');
+    expect(result).toBeDefined();
   });
 });
